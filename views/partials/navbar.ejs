@@ -9,20 +9,33 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Add Blog</a>
-          </li>
+          <% if (locals.user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Add Blog</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Rohan Dutta
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+                
+              </ul>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/signup">Create Account</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/user/signin">Sign-In</a>
+            </li>
+           <% } %>
+           
          
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              ROhan Dutta
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-              
-            </ul>
-          </li>
+        
+         
         </ul>
       </div>
       <form class="d-flex flex-nowrap pe-5" role="search">
@@ -33,7 +46,7 @@
     </div>
   </nav>
 
-  
+
 
       <!-- This gives an error if wrong password is input  -->
   <% if (locals.error) { %>
