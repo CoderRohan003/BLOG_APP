@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>Signup</title>
+        <style>
+            /* Custom CSS for Signup Page */
+            body {
+                background: linear-gradient(to bottom, #5f9ea0, #4682b4);
+                font-family: Arial, sans-serif;
+                height: 100vh;
+
+            }
+
+            .container {
+
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin-top: 50px;
+            }
+
+            .wrapper {
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            .form-group1 {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .form-group{
+                margin-bottom: 20px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: #666;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+            .form-group1 button {
+
+                width: 80%;
+                padding: 10px;
+                /* Reduced padding */
+                border: none;
+                border-radius: 20px;
+                /* Rounded edges */
+                background-color: #77ff00;
+                /* Matched button color to background */
+                color: #000000;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .form-group1 button:hover {
+                background-color: #175100;
+                /* Darker shade on hover */
+            }
+        </style>
+</head>
+
+<body>
+
+    <%- include('./partials/navbar') %>
+
+        <div class="container">
+            <h2>Signup</h2>
+
+            <form action="/user/signup" method="post">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group1">
+                    <button type="submit">Sign Up</button>
+                </div>
+        </div>
+        </form>
+        </div>
+
+        <%- include('./partials/scripts') %>
+</body>
+
+</html>
