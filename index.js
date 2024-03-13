@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
+const Blog = require("./models/blog")
 
 const path = require("path")
 const PORT = 8000;
@@ -20,9 +21,13 @@ app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 
-app.get("/", (req,res) => {
+app.use(express.static(path.resolve("./public"))); // Content in public folder is made into a static one 
+
+app.get("/",async (req,res) => {
+    const allBlogs = await Blog.find({});
     res.render("home",{
         user: req.user,   // Passing user obj to home page 
+        blogs: allBlogs,
     });
 });
 
