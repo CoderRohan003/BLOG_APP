@@ -4,6 +4,7 @@ const path = require("path");
 
 const router = Router();
 
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.resolve(`./public/uploads`));
@@ -25,9 +26,13 @@ router.get("/add-new", (req, res) => {
 
 
 router.post("/", upload.single("coverImageURL"), (req, res) => {
+  if (!req.file) {
+      return res.status(400).send('No files were uploaded.');
+  }
   console.log(req.body);
-    console.log(req.file);
+  console.log(req.file);
   return res.redirect("/");
 });
+
 
 module.exports = router;
