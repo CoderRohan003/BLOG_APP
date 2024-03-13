@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
   <%- include('./partials/head') %>
-    <title>Home Page</title>
+    <title>Add New Blog</title>
 </head>
 <body>
 
     <%- include('./partials/navbar') %>
-    <%= JSON.stringify(user) %>
+      <div class="container mt-5">
+        <form action="">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="title" name="title">
+        </form>
+      </div>
+      <div class="mb-3">
+        <label class="mb-2" for="body">Body</label>
+        <textarea class="form-control p-5" placeholder="Write your content here" id="body"></textarea>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary">Submit</button>
+      </div>
     <%- include('./partials/scripts') %>
 </body>
 </html>
