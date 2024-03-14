@@ -31,6 +31,7 @@ const userSchema = new Schema({
     },
 },{ timestamps:true });
 
+
 userSchema.pre("save", function (next) {
     const user = this;     // pointing to present user
 

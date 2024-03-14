@@ -25,7 +25,14 @@ router.get("/add-new", (req, res) => {
   });
 });
 
-
+router.get("/:id" , async (req,res)=> {
+  const blog = await Blog.findById(req.params.id).populate("createdBy");    // populate helps to link user id with the info of user
+ 
+  return res.render('blog',{
+    user:req.user,
+    blog,
+  });
+})
 
 router.post("/", upload.single("coverImageURL"), async (req, res) => {
   if (!req.file) {
@@ -33,7 +40,7 @@ router.post("/", upload.single("coverImageURL"), async (req, res) => {
   }
   const { title, body } = req.body;
   const blog = await Blog.create({
-    body, title, createdBy: req.user._id, coverImageURL: `/uploads${req.file.filename}`,
+    body, title, createdBy: req.user._id,coverImageURL: `/uploads/${req.file.filename}`,
   })
   return res.redirect(`/blog/${blog._id}`);
 });

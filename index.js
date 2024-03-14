@@ -23,13 +23,14 @@ app.use(checkForAuthenticationCookie("token"));
 
 app.use(express.static(path.resolve("./public"))); // Content in public folder is made into a static one 
 
-app.get("/",async (req,res) => {
+app.get("/", async (req, res) => {
     const allBlogs = await Blog.find({});
-    res.render("home",{
-        user: req.user,   // Passing user obj to home page 
-        blogs: allBlogs,
+    
+    res.render("home", {
+      user: req.user,
+      blogs: allBlogs,
     });
-});
+  });
 
 app.use("/user" , UserRoute);
 app.use("/blog" , BlogRoute);
